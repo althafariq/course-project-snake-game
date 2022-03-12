@@ -1,5 +1,5 @@
 const CELL_SIZE = 20;
-// Soal no 1: Set canvas size menjadi 600
+//Set canvas size menjadi 400
 const CANVAS_SIZE = 400;
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
@@ -10,7 +10,7 @@ const DIRECTION = {
     UP: 2,
     DOWN: 3,
 }
-// Soal no 2: Pengaturan Speed (semakin kecil semakin cepat) ubah dari 150 ke 120
+// Pengaturan Speed (semakin kecil semakin cepat)
 const MOVE_INTERVAL = 120;
 
 function initPosition() {
@@ -43,7 +43,7 @@ function initSnake(color) {
 }
 let snake1 = initSnake("purple");
 
-// Soal no 4: make apples array
+// make apples array
 let apples = [{
     color: "red",
     position: initPosition(),
@@ -58,7 +58,6 @@ function drawCell(ctx, x, y, color) {
     ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
 
-// Soal no 6: Pada fungsi drawScore, tambahkan score3Board:
 function drawScore(snake) {
     let scoreCanvas;
     if (snake.color == snake1.color) {
@@ -87,15 +86,12 @@ function draw() {
         for (let i = 0; i < apples.length; i++) {
             let apple = apples[i];
 
-            // Soal no 3: DrawImage apple dan gunakan image id:
+            // DrawImage apple dan gunakan image id:
             var img = document.getElementById("apple");
             ctx.drawImage(img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
 
         drawScore(snake1);
-        drawScore(snake2);
-        // Soal no 6: Draw Player 3 Score:
-        drawScore(snake3);
     }, REDRAW_INTERVAL);
 }
 
@@ -114,7 +110,7 @@ function teleport(snake) {
     }
 }
 
-// Soal no 4: Jadikan apples array
+// Jadikan apples array
 function eat(snake, apples) {
     for (let i = 0; i < apples.length; i++) {
         let apple = apples[i];
@@ -163,13 +159,12 @@ function checkCollision(snakes) {
         }
     }
     if (isCollide) {
-        // Soal no 5: Add game over audio:
+        // Add game over audio:
         var audio = new Audio('./assets/game-over.mp3');
         audio.play();
 
         alert("Game over");
         snake1 = initSnake("purple");
-        snake2 = initSnake("blue");
     }
     return isCollide;
 }
@@ -190,7 +185,7 @@ function move(snake) {
             break;
     }
     moveBody(snake);
-    // Soal no 6: Check collision dengan snake3
+    // Check collision
     if (!checkCollision([snake1])) {
         setTimeout(function() {
             move(snake);
