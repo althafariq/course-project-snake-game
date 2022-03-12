@@ -1,6 +1,6 @@
 const CELL_SIZE = 20;
-//Set canvas size menjadi 500
-const CANVAS_SIZE = 500;
+//Set canvas size menjadi 400
+const CANVAS_SIZE = 400;
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
