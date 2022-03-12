@@ -1,6 +1,6 @@
 const CELL_SIZE = 20;
-//Set canvas size menjadi 400
-const CANVAS_SIZE = 400;
+//Set canvas size menjadi 500
+const CANVAS_SIZE = 500;
 const REDRAW_INTERVAL = 50;
 const WIDTH = CANVAS_SIZE / CELL_SIZE;
 const HEIGHT = CANVAS_SIZE / CELL_SIZE;
@@ -41,7 +41,7 @@ function initSnake(color) {
         score: 0,
     }
 }
-let snake1 = initSnake("purple");
+let snake = initSnake("purple");
 
 // make apples array
 let apples = [{
@@ -60,14 +60,14 @@ function drawCell(ctx, x, y, color) {
 
 function drawScore(snake) {
     let scoreCanvas;
-    if (snake.color == snake1.color) {
+    if (snake.color == snake.color) {
         scoreCanvas = document.getElementById("score1Board");
     }
     let scoreCtx = scoreCanvas.getContext("2d");
 
     scoreCtx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     scoreCtx.font = "15px Arial";
-    scoreCtx.fillStyle = snake.color
+    scoreCtx.fillStyle = "Blue";
     scoreCtx.fillText(snake.score, 10, scoreCanvas.scrollHeight / 2);
 }
 
@@ -78,9 +78,9 @@ function draw() {
 
         ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
         
-        drawCell(ctx, snake1.head.x, snake1.head.y, snake1.color);
-        for (let i = 1; i < snake1.body.length; i++) {
-            drawCell(ctx, snake1.body[i].x, snake1.body[i].y, snake1.color);
+        drawCell(ctx, snake.head.x, snake.head.y, snake.color);
+        for (let i = 1; i < snake.body.length; i++) {
+            drawCell(ctx, snake.body[i].x, snake.body[i].y, snake.color);
         }
 
         for (let i = 0; i < apples.length; i++) {
@@ -91,7 +91,8 @@ function draw() {
             ctx.drawImage(img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
 
-        drawScore(snake1);
+
+        drawScore(snake);
     }, REDRAW_INTERVAL);
 }
 
@@ -164,7 +165,7 @@ function checkCollision(snakes) {
         audio.play();
 
         alert("Game over");
-        snake1 = initSnake("purple");
+        snake = initSnake("purple");
     }
     return isCollide;
 }
@@ -185,8 +186,8 @@ function move(snake) {
             break;
     }
     moveBody(snake);
-    // Check collision
-    if (!checkCollision([snake1])) {
+   
+    if (!checkCollision([snake])) {
         setTimeout(function() {
             move(snake);
         }, MOVE_INTERVAL);
@@ -215,18 +216,18 @@ function turn(snake, direction) {
 
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowLeft") {
-        turn(snake1, DIRECTION.LEFT);
+        turn(snake, DIRECTION.LEFT);
     } else if (event.key === "ArrowRight") {
-        turn(snake1, DIRECTION.RIGHT);
+        turn(snake, DIRECTION.RIGHT);
     } else if (event.key === "ArrowUp") {
-        turn(snake1, DIRECTION.UP);
+        turn(snake, DIRECTION.UP);
     } else if (event.key === "ArrowDown") {
-        turn(snake1, DIRECTION.DOWN);
+        turn(snake, DIRECTION.DOWN);
     }
 })
 
 function initGame() {
-    move(snake1);
+    move(snake);
 }
 
 initGame();
