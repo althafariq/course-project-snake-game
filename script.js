@@ -96,6 +96,21 @@ function draw() {
     }, REDRAW_INTERVAL);
 }
 
+function teleport(snake) {
+    if (snake.head.x < 0) {
+        snake.head.x = CANVAS_SIZE / CELL_SIZE - 1;
+    }
+    if (snake.head.x >= WIDTH) {
+        snake.head.x = 0;
+    }
+    if (snake.head.y < 0) {
+        snake.head.y = CANVAS_SIZE / CELL_SIZE - 1;
+    }
+    if (snake.head.y >= HEIGHT) {
+        snake.head.y = 0;
+    }
+}
+
 // Jadikan apples array
 function eat(snake, apples) {
     for (let i = 0; i < apples.length; i++) {
@@ -130,6 +145,29 @@ function moveUp(snake) {
     snake.head.y--;
     teleport(snake);
     eat(snake, apples);
+}
+
+function checkCollision(snakes) {
+    let isCollide = false;
+    //this
+    for (let i = 0; i < snakes.length; i++) {
+        for (let j = 0; j < snakes.length; j++) {
+            for (let k = 1; k < snakes[j].body.length; k++) {
+                if (snakes[i].head.x == snakes[j].body[k].x && snakes[i].head.y == snakes[j].body[k].y) {
+                    isCollide = true;
+                }
+            }
+        }
+    }
+    if (isCollide) {
+        // Add game over audio:
+        var audio = new Audio('./assets/game-over.mp3');
+        audio.play();
+
+        alert("Game over");
+        snake = initSnake("purple");
+    }
+    return isCollide;
 }
 
 function move(snake) {
