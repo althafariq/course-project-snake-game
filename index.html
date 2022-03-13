@@ -3,22 +3,37 @@
     </head>
         <script type="text/javascript" src="script.js"></script>
     <body onload="draw();">
-            <!-- Soal no 3: Tambahkan resource gambar untuk ditampilkan di canvas -->
-            <img id="apple" style="display: none;" width="20" height="20" src="./assets/apple.png" alt="Apple">
-            <!-- Soal no 1: Ubah nilai width dan height menjadi 600 pada element canvas:  -->
-            <canvas id="test" width="450" height="450"></canvas>
-            <canvas id="snakeBoard" width="400" height="400" style="border:1px solid #000000;"></canvas>
-            <div>
-                <h3 style="text-align: center;">Snake - Level :</h3>
-            </div>
-            <div style="margin-left: auto; margin-right: auto; display: block;">
-                <h4 style="text-align: center;">Score</h4>
-                <canvas id="test" width="640" height="0"></canvas>
-                <canvas id="score1Board" width="40" height="40" style="border:1px solid #000000;"></canvas>
-            </div>
+        <h1>Snake</h1><br>
+        <div style="padding-left: 10px;">Life</div>
+        <!-- Soal no 3: Tambahkan resource gambar untuk ditampilkan di canvas -->
+        <img id="apple" style="display: none;" width="20" height="20" src="./assets/apple.png" alt="Apple">
+        <img id="head-snake" style="display: none;" width="20" height="20" src="./assets/ular.png">
+        <img id="life" style="display: none;" width="20" height="20" src="./assets/life.png" alt="Nyawa">
+        <!-- Soal no 1: Ubah nilai width dan height menjadi 600 pada element canvas:  -->
+        <!-- <canvas id="test" width="450" height="450"></canvas> -->
+        <!-- <div>
+            <h3 style="text-align: center;">Snake - Level :</h3>
+        </div>
+        <canvas id="levelBoard" width="500" height="50" style="position: absolute; margin-left: 250;" value=""></canvas>
+        <div style="margin-left: auto; margin-right: auto; display: block;">
+            <h4 style="text-align: center;">Score</h4>
+            <canvas id="test" width="640" height="0"></canvas>
+            <canvas id="score1Board" width="40" height="40" style="border:1px solid #000000;"></canvas>
+        </div>
+        
+        <div>
+            <h4 style="text-align: center;">Speed :
+                <canvas id="speed" width="70" height="25"></canvas>
+            </h4>
+        </div> -->
+        
             
-            <div>
-                <h4 id="speed" style="text-align: center;">Speed :</h4>
-            </div>
+        <canvas id="lifeBoard" width="250" height="50" style="position: absolute;"></canvas>
+        <canvas id="snakeBoard" width="400" height="400" style="margin-top: 30px; border:1px solid #000000;"></canvas>
+        <!-- <canvas id="snakeBoard" width="600" height="600" style="border:1px solid #000000; margin-top: 50px;"></canvas> -->
+        <canvas id="score1Board" width="80" height="60" style="border:1px solid #000000;"></canvas>
+        <canvas id="score2Board" width="100" height="100" style="border:1px solid #000000;"></canvas>
+        <canvas id="score2Board" width="600" height="100"></canvas><br>
+        <canvas id="levelBoard" width="100" height="50" style="position: absolute; margin-top: 15px; margin-left: 100px;"></canvas>
     </body>
 </html>
