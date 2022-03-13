@@ -45,6 +45,7 @@ function initSnake(color) {
         level: 1
     }
 }
+
 let snake = initSnake("green");
 
 // make apples array
@@ -58,7 +59,36 @@ let apples = [{
 }]
 
 let life = {
-    position: initPosition()
+    position: initPosition(),
+}
+
+function drawWall(snake){
+    var wallRect = document.getElementById("snakeBoard");
+    var wallCtx = wallRect.getContext("2d");
+    
+    if (snake.level == 1) {
+        wallCtx.fillStyle = "black";
+        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
+    } else if (snake.level == 2) {
+        wallCtx.fillStyle = "black";
+        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
+        wallCtx.fillRect(CANVAS_SIZE / 2, 60, 20, CANVAS_SIZE - 120);
+    } else if (snake.level == 3) {
+        wallCtx.fillStyle = "black";
+        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
+        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
+    } else if (snake.level == 4) {
+        wallCtx.fillStyle ="black";
+        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
+        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
+        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
+    } else if (snake.level == 5) {
+        wallCtx.fillStyle ="black";
+        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
+        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
+        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
+        wallCtx.fillRect(CANVAS_SIZE / 2, 60, 20, CANVAS_SIZE - 120);
+    }
 }
 
 function drawCell(ctx, x, y, color) {
@@ -169,6 +199,7 @@ function draw() {
         drawScore(snake);
         drawSpeed(snake);
         drawLife(snake);
+        drawWall(snake);
     }, REDRAW_INTERVAL);
 }
 
