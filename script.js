@@ -63,31 +63,55 @@ let life = {
 }
 
 function drawWall(snake){
-    var wallRect = document.getElementById("snakeBoard");
-    var wallCtx = wallRect.getContext("2d");
-    
-    if (snake.level == 1) {
-        wallCtx.fillStyle = "black";
-        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
-    } else if (snake.level == 2) {
-        wallCtx.fillStyle = "black";
-        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
-        wallCtx.fillRect(CANVAS_SIZE / 2, 60, 20, CANVAS_SIZE - 120);
-    } else if (snake.level == 3) {
-        wallCtx.fillStyle = "black";
-        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
-        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
-    } else if (snake.level == 4) {
-        wallCtx.fillStyle ="black";
-        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
-        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
-        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
-    } else if (snake.level == 5) {
-        wallCtx.fillStyle ="black";
-        wallCtx.fillRect(0, 0, CANVAS_SIZE, 20);//UPPER
-        wallCtx.fillRect(0, 0, 20, CANVAS_SIZE);//LEFT
-        wallCtx.fillRect(60, CANVAS_SIZE / 2, CANVAS_SIZE - 120, 20);
-        wallCtx.fillRect(CANVAS_SIZE / 2, 60, 20, CANVAS_SIZE - 120);
+    var wall = document.getElementById("snakeBoard");
+    var wallctx = wall.getContext("2d");
+
+    var img = document.getElementById("wall");
+    if (snake.level == 2) {
+        var startPosX = 60;
+        var startPosY = 200;
+        for(var i = 0; i < 14; i++){
+            wallctx.drawImage(img, startPosX, startPosY , CELL_SIZE, CELL_SIZE);
+            wallctx.drawImage(img, startPosY, startPosX, CELL_SIZE, CELL_SIZE);
+            startPosX+=20;
+        }
+    } else if (snake.level == 3){
+        var startPosX = 0;
+        var startPosY = 0;
+        for(var i = 0; i < 20; i++){
+            wallctx.drawImage(img, startPosX, startPosY, CANVAS_SIZE, 20);
+            wallctx.drawImage(img, startPosY, startPosX, 20, CANVAS_SIZE);
+            startPosX+=20;
+        } 
+    } else if (snake.level == 4){
+        var startPosX = 0;
+        var startPosY = 0;
+        for(var i = 0; i < 20; i++){
+            wallctx.drawImage(img, startPosX, startPosY, CANVAS_SIZE, 20);
+            wallctx.drawImage(img, startPosY, startPosX, 20, CANVAS_SIZE);
+            startPosX+=20;
+        }
+        var startPosX = 60;
+        var startPosY = 200;
+        for (var i = 0; i < 14; i++) {
+            wallctx.drawImage(img, startPosX, startPosY, CELL_SIZE, CELL_SIZE);
+            startPosX+=20;
+        }
+    } else if (snake.level == 5){
+        var startPosX = 60;
+        var startPosY = 200;
+        for(var i = 0; i < 14; i++){
+            wallctx.drawImage(img, startPosX, startPosY , CELL_SIZE, CELL_SIZE);
+            wallctx.drawImage(img, startPosY, startPosX, CELL_SIZE, CELL_SIZE);
+            startPosX+=20;
+        }
+        var startPosX = 0;
+        var startPosY = 0;
+        for(var i = 0; i < 20; i++){
+            wallctx.drawImage(img, startPosX, startPosY, CANVAS_SIZE, 20);
+            wallctx.drawImage(img, startPosY, startPosX, 20, CANVAS_SIZE);
+            startPosX+=20;
+        }
     }
 }
 
@@ -303,7 +327,7 @@ function checkCollision(snakes) {
             alert("Game over");
             snake = initSnake("green");
             MOVE_INTERVAL = 190
-        }
+        }   
     }
     return isCollide;
 }
