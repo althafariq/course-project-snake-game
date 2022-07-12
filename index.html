@@ -1,0 +1,21 @@
+<html>
+    <head>
+    </head>
+        <script type="text/javascript" src="script.js"></script>
+    <body onload="draw();">
+        <h1>Snake</h1><br>
+        <div style="padding-left: 10px;">Life</div>
+        <!-- Soal no 3: Tambahkan resource gambar untuk ditampilkan di canvas -->
+        <img id="apple" style="display: none;" width="20" height="20" src="./assets/apple.png" alt="Apple">
+        <img id="head-snake" style="display: none;" width="20" height="20" src="./assets/ular.png">
+        <img id="life" style="display: none;" width="20" height="20" src="./assets/life.png" alt="Nyawa">
+        <img id="wall" style="display: none" width="20" height="20" src="./assets/bricks.jpg" alt="wall">
+        
+        <canvas id="lifeBoard" width="250" height="50" style="position: absolute;"></canvas>
+        <canvas id="snakeBoard" width="400" height="400" style="margin-top: 30px; border:1px solid #000000;"></canvas>
+        <canvas id="score1Board" width="80" height="60" style="border:1px solid #000000;"></canvas>
+        <canvas id="score2Board" width="100" height="100" style="border:1px solid #000000;"></canvas>
+        <canvas id="score2Board" width="600" height="100"></canvas><br>
+        <canvas id="levelBoard" width="100" height="50" style="position: absolute; margin-top: 15px; margin-left: 100px;"></canvas>
+    </body>
+</html>
